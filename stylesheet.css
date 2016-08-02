@@ -1,0 +1,141 @@
+@charset "utf-8";
+.carousel-inner .item img{
+	width:100%;
+}
+#banners{
+	margin-top:0px;
+	margin-bottom:40px;
+}
+#background{
+	padding:0px;
+	padding-bottom:15px;
+}
+.carousel-caption p{
+	display: inline-block;
+	padding-left:8px;
+	padding-right:8px;
+	background-color:rgba(0, 0, 0, 0.6);
+}
+.status-circle{
+	width:30px;
+	height:30px;
+	border-radius:50%;
+	margin:0 auto;
+	display: table;
+}
+.status-circle#online{
+	border:2px solid #00AA00;
+	color: #55FF55;
+}
+.status-circle#offline{
+	border:2px solid #AA0000;
+	color: #FF5555;
+}
+.status-circle span{
+	display: table-cell;
+	vertical-align:middle;
+}
+.status-info{
+	color:#353535;
+}
+#nobody{
+	width:50px;
+	height:50px;
+	border:1px solid #7F7F7F;
+	color:#7F7F7F;
+	display: table;
+	margin:0 auto;
+}
+#nobody span{
+	display: table-cell;
+	vertical-align:middle;
+}
+.online-face{
+	margin: 5px;
+}
+#full{
+	text-decoration: none;
+	font-size:18;
+	position:relative;
+	right:5px;
+	top:5px;
+}
+#reddit{
+	font-size:10px;
+	padding: 0 30px;
+}
+.post{
+	background: #FCFCFC;
+	border-bottom: 3px solid #E3E3E3;
+	padding:5px;
+	margin-bottom:10px;
+	height:58px;
+}
+.post .row{
+	margin:0;
+	text-align:left;
+}
+.title{
+	margin-right: 5px;
+	font-size:14px;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.post .row .info{
+	text-align: left;
+}
+.post .row .votes{
+	font-size:12px;
+	text-align:center;
+	height: 44px;
+	padding: 0 6px;
+    padding-top: 13px;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.post .row .rthumbnail{
+	padding: 0 7px;
+}
+.rthumbnail img{
+	max-width:100%;
+	display: inline-block;
+	vertical-align:middle;
+	max-height:48px;
+}
+.post .row div{
+	padding: 0;
+}
+.post .row .info span a{
+	color:#575757;
+}
+.post .row .info .title a{
+	color: #df691a;
+}
+.invisible{
+	visibility:hidden;
+}
+#postContainer{
+	position:relative;
+	height:200px;
+    overflow: hidden;
+}
+.posts{
+	position:absolute;
+	width:100%;
+}
+#posts_replace_old{
+	top: 100%;
+}
+#posts_replace_new{
+	top: -100%;
+}
+.photo_cred{
+	font-style: italic;
+	color: #949494;
+	font-size: 12px;
+	display: block;
+}

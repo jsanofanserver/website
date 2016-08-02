@@ -1,0 +1,111 @@
+@charset "utf-8";
+.col-sm-2{
+	text-align: center;
+}
+.col-md-2{
+	text-align: center;
+}
+.user-stats{
+	background: #FCFCFC;
+	width: 90%;
+	margin: 0 auto;
+	padding-left:0px;
+	margin-bottom:20px;
+	overflow:hidden;
+}
+.titles{
+	height: 80px;
+}
+.icon-circle img{
+	margin:0 auto;
+}
+.face{
+	position:relative;
+}
+.stat-title{
+	color: #3B3B3B;
+	width:15.5%;
+	font-size:13px;
+	height:80px;
+}
+.open .row .stat-title{
+	height:83px;
+}
+.open .row .active{
+	background:#F7F7F7;
+	height:83px;
+}
+.extra{
+	background: #F7F7F7;
+	width: 100%;
+	margin: 0 auto;
+	min-height: 70px;
+	padding-left:10px;
+}
+.display{
+	width:22.5%;
+	text-align:left;
+}
+.open .extra{
+	border-bottom:3px solid #DEDEDE;
+	padding-left:10px;
+}
+.closed{
+	border-bottom:3px solid #E3E3E3;
+}
+.open .row div{
+	border-bottom:3px solid #EBEBEB;
+}
+.open .row div.active{
+	border-bottom:3px solid #F7F7F7;
+}
+.open .extra .row div{
+	border-bottom:none;
+	height: 60px;
+	text-align: left;
+}
+.icon-circle{
+	border-radius: 50%;
+	width: 54px;
+	height: 54px;
+	border: 2px solid #E4A7FF;
+	overflow: hidden;
+	text-align: center;
+	padding:0;
+	margin: 0 auto;
+	margin-top: 5px;
+}
+.open .row .stat-title .icon-circle{
+	border: 2px solid #E4A7FF;
+}
+.extra-info{
+	padding-top:19px;
+	padding-bottom:6px;
+}
+.extra-info.death{
+	padding-top:21px;
+}
+.extra-row{
+	display:none;
+}
+.extra-row.visible{
+	display:block;
+}
+.block{
+	border-radius:50%;
+	border-bottom:3px solid #DEDEDE;
+}
+#ip{
+	width:100%;
+	text-align:center;
+	color:#D1D1D1;
+}
+.user-stats.closed .extra{
+	display:none;
+}
+#loading{
+	width:100%;
+	text-align:center;
+	padding-bottom:50px;
+	opacity:0.6;
+}

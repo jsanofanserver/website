@@ -1,0 +1,15 @@
+@charset "utf-8";
+.user{
+	width:130px;
+	padding-bottom:7px;
+	margin:5px;
+	background:#FCFCFC;
+	border-bottom:3px solid #E3E3E3;
+	display:inline-block;
+}
+.user img{
+	margin-bottom:7px;
+}
+#background{
+	padding-top:20px;
+}
