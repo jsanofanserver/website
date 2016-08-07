@@ -6,7 +6,7 @@ body{
 }
 #major_background{
 	max-width: 100%;
-	background: url(req/bkg.jpg) fixed;
+	background: url(images/bkg.jpg) fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -38,7 +38,7 @@ body{
 }
 #background{
 	width: 100%;
-	background: url(req/bkg2.png);
+	background: url(images/bkg2.png);
 	margin: 0;
 	border-top:3px solid #E3E3E3;
 	padding-top:80px;

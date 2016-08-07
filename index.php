@@ -48,42 +48,42 @@
             
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="images/banner0.jpg" alt="Town Hall at Night">
+                    <img src="images/banners/banner0.jpg" alt="Town Hall at Night">
                     <div class="carousel-caption">
                     	<p>Town Hall at Night</p>
                     </div>
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner1.jpg" alt="Muckluck's Castle">
+                    <img src="images/banners/banner1.jpg" alt="Muckluck's Castle">
                     <div class="carousel-caption">
                     	<p>Muckluck's Castle</p>
                     </div>
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner2.jpg" alt="Town Hall During the Day">
+                    <img src="images/banners/banner2.jpg" alt="Town Hall During the Day">
                     <div class="carousel-caption">
                     	<p>Town Hall During the Day</p>
                     </div>
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner3.jpg" alt="JSFS' Nether Hub">
+                    <img src="images/banners/banner3.jpg" alt="JSFS' Nether Hub">
                     <div class="carousel-caption">
                     	<p>JSFS' Nether Hub</p>
                     </div>
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner4.jpg" alt="Matthamew's Palace">
+                    <img src="images/banners/banner4.jpg" alt="Matthamew's Palace">
                     <div class="carousel-caption">
                     	<p>Matthamew's Palace</p>
                     </div>
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner5.jpg" alt="Ace's Hockey Stadium">
+                    <img src="images/banners/banner5.jpg" alt="Ace's Hockey Stadium">
                     <div class="carousel-caption">
                     	<p>Ace's Hockey Stadium<br>
                         <span class="photo_cred">Photo by Kyle</span></p>
@@ -91,7 +91,7 @@
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner6.jpg" alt="Flash's Kwik-E-Mart">
+                    <img src="images/banners/banner6.jpg" alt="Flash's Kwik-E-Mart">
                     <div class="carousel-caption">
                     	<p>Flash's Kwik-E-Mart<br>
                         <span class="photo_cred">Photo by SuperFlash</span></p>
@@ -99,7 +99,7 @@
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner7.jpg" alt="JSano Land">
+                    <img src="images/banners/banner7.jpg" alt="JSano Land">
                     <div class="carousel-caption">
                     	<p>JSano Land<br>
                         <span class="photo_cred">Photo by StreedCredCookie</span></p>
@@ -107,7 +107,7 @@
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner8.jpg" alt="JSano Kart">
+                    <img src="images/banners/banner8.jpg" alt="JSano Kart">
                     <div class="carousel-caption">
                     	<p>JSano Kart<br>
                         <span class="photo_cred">Photo by StreedCredCookie</span></p>
@@ -115,9 +115,9 @@
                 </div>
                 
                 <div class="item">
-                    <img src="images/banner9.jpg" alt="Shop Town">
+                    <img src="images/banners/banner9.jpg" alt="A Town on the JFS">
                     <div class="carousel-caption">
-                    	<p>Shop Town<br>
+                    	<p>A Town on the JFS<br>
                         <span class="photo_cred">Photo by Shawstin</span></p>
                     </div>
                 </div>
@@ -142,7 +142,6 @@
                 <div class="row">
                 	<div class="col-sm-2 col-sm-offset-4">
 						<?php
-                        
 						require __DIR__ . "/src/MinecraftQuery.php";
                         require __DIR__ . "/src/MinecraftQueryException.php";
                         
@@ -165,18 +164,15 @@
 							echo "<div id='offline' class='status-circle'><span class='glyphicon glyphicon-remove'></span></div>Offline";
 							$online = FALSE;
                         }
-						
                         ?>
                     </div>
                     <div class="col-sm-4" style="text-align:left;">
                     <?php
-					
 					if($online){
                     	echo "<strong>Version:</strong> <span class='status-info'>" . $version . "</span><br><strong>Players:</strong> <span class='status-info'>" . $player_amnt . "</span>";
 					}else{
 						echo "Message us on skype to get the server back up";
 					}
-					
 					?>
                     
                     
@@ -189,9 +185,9 @@
                 
             </div>
             <div class="col-md-3">
-            	<h2>Players Online</h2>
+            	
+                <h2>Players Online</h2>
 				<?php
-                
                 try {
                     $Query->Connect( 'localhost', 25565 );
                     $status = $Query->GetInfo( );
@@ -208,11 +204,24 @@
                 catch( MinecraftQueryException $e ) {
                     echo "<div id='nobody' data-toggle='tooltip' data-placement='left' title='Nobody Online'><span class='glyphicon glyphicon-remove'></span></div>";
                 }
-                
                 ?>
+                
+                
+                
+                <!--<h2>TeamSpeak</h2>
+                
+                <?php
+				/*
+				require_once("req/ts3/TeamSpeak3.php");
+				
+				$ts3_VirtualServer = TeamSpeak3::factory("serverquery://admin:FZ2rCXYm@jsanofanserver.com:10011/?server_port=9987");
+				
+				echo $ts3_VirtualServer->getViewer(new TeamSpeak3_Viewer_Html($path_to_icons, $path_to_flags, "data:image"));
+				*/
+				?>-->
             </div>
             <div class="col-md-5" id="reddit">
-            	<h2>Recent Posts</h2>
+            	<h2><a href="https://www.reddit.com/r/jsanofanserver/" target="_blank">Recent Posts</a></h2>
                 
                 <div id="chevron_up" class="invisible"><span class="glyphicon glyphicon-chevron-up"></span></div>
                 <div id="postContainer">
@@ -226,7 +235,7 @@
     </div>
     <div id="ip">IP :: jsanofanserver.com<span id="full" class="glyphicon glyphicon-info-sign pull-right" data-toggle="tooltip" data-placement="right" title="Website by Dakota"></span></div>
 </div>
-<div id="logo"><a href="#"><img src="req/logo.jpg"></a></div>
+<div id="logo"><a href="#"><img src="images/logo.jpg"></a></div>
 <script>
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
@@ -245,7 +254,7 @@ foreach($posts["data"]["children"] as $post){
 	$title = $post["data"]["title"];
 	$perma = $post["data"]["permalink"];
 	$created = $post["data"]["created"];
-	$thumbnail = $post["data"]["thumbnail"];
+	$thumbnail = str_replace("http://", "https://", $post["data"]["thumbnail"]);
 	$score = $post["data"]["score"];
 	$time = $post["data"]["created_utc"];
 	
