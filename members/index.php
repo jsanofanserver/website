@@ -38,7 +38,7 @@ ga('send', 'pageview');
             }
         ?>
     </div>
-    <div id="ip">IP : jsanofanserver.com</div>
+    <div id="ip">IP :: jsanofanserver.com</div>
 </div>
 <div id="logo"><a href="../"><img src="../images/logo.jpg"></a></div>
 </body>
