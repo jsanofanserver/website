@@ -11,6 +11,11 @@ renders["vanillanorth"] = {
     "dimension": "overworld",
     "manualpois":[
                    {'id':'Marker',
+                    'x':-500,
+                    'y':64,
+                    'z':4368,
+                    'name':'Ace\'s Hockey Stadium'},
+                   {'id':'Marker',
                     'x':565,
                     'y':64,
                     'z':534,
@@ -30,6 +35,11 @@ renders["vanillasouth"] = {
     "dimension": "overworld",
     "northdirection": "lower-right",
     "manualpois":[
+                   {'id':'Marker',
+                    'x':-500,
+                    'y':64,
+                    'z':4368,
+                    'name':'Ace\'s Hockey Stadium'},
                    {'id':'Marker',
                     'x':565,
                     'y':64,
