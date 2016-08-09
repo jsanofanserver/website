@@ -79,7 +79,7 @@ renders["vanillanorth"] = {
                     'x':3323,
                     'y':85,
                     'z':585,
-                    'name':'Jungle Spawn'}],
+                    'name':'Spidermonkey Rainforest'}],
     "markers": [dict(name="Markers", filterFunction=markerFilter, icon="icons/marker_town.png", checked=True)],
 }
 
@@ -159,7 +159,7 @@ renders["vanillasouth"] = {
                     'x':3323,
                     'y':85,
                     'z':585,
-                    'name':'Jungle Spawn'}],
+                    'name':'Spidermonkey Rainforest'}],
     "markers": [dict(name="Markers", filterFunction=markerFilter, icon="icons/marker_town.png", checked=True)],
 }
 
