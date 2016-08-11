@@ -116,9 +116,9 @@
                 </div>
                 
                 <div class="item">
-                    <img src="images/banners/banner9.jpg" alt="A Town on the JFS">
+                    <img src="images/banners/banner9.jpg" alt="Shop Town">
                     <div class="carousel-caption">
-                    	<p>A Town on the JFS<br>
+                    	<p>Shop Town<br>
                         <span class="photo_cred">Photo by Shawstin</span></p>
                     </div>
                 </div>
