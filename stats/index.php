@@ -197,7 +197,7 @@ foreach($members as $uuid => $name){
 		for($u = 0; $u < 10; $u++){
 			if(array_key_exists($u, $use_keys)){
 				$next = $u + 1;
-				echo "'" . $next . "' : {'Name' : '" . $use_keys[$u] . "','Title' : '" . $use_names[$use_keys[$i]] . "','Amount' : '" . $use[$use_keys[$u]] . "'},";
+				echo "'" . $next . "' : {'Name' : '" . $use_keys[$u] . "','Title' : '" . $use_names[$use_keys[$u]] . "','Amount' : '" . $use[$use_keys[$u]] . "'},";
 			}
 		}
 		
