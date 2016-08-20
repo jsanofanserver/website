@@ -129,11 +129,11 @@ foreach($members as $uuid => $name){
 		
 		foreach ($stats as $key => $value) {
 			if (substr($key, 0, 25) == "stat.mineBlock.minecraft.") {
-				$block_name = substr($key, 25);
+				$block_name = ucwords(str_replace("_", " ", substr($key, 25)));
 				$break[$block_name] = $stats[$key];
 				$break_total = $break_total + $stats[$key];
 			}else if(substr($key, 0, 23) == "stat.useItem.minecraft."){
-				$item_name = substr($key, 23);
+				$block_name = ucwords(str_replace("_", " ", substr($key, 23)));
 				$use[$item_name] = $stats[$key];
 				$use_total = $use_total + $stats[$key];
 			}
