@@ -129,11 +129,11 @@ foreach($members as $uuid => $name){
 		
 		foreach ($stats as $key => $value) {
 			if (substr($key, 0, 25) == "stat.mineBlock.minecraft.") {
-				$block_name = ucwords(str_replace("_", " ", substr($key, 25)));
+				$block_name = substr($key, 25);
 				$break[$block_name] = $stats[$key];
 				$break_total = $break_total + $stats[$key];
 			}else if(substr($key, 0, 23) == "stat.useItem.minecraft."){
-				$block_name = ucwords(str_replace("_", " ", substr($key, 23)));
+				$block_name = substr($key, 23);
 				$use[$item_name] = $stats[$key];
 				$use_total = $use_total + $stats[$key];
 			}
@@ -216,7 +216,9 @@ foreach($members as $uuid => $name){
 
 
 
-
+String.prototype.toProperCase = function () {
+    return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+};
 
 
 users = users.sort(function (a, b) {
@@ -239,13 +241,13 @@ function output(list){
 			"<div class='col-sm-3 extra-info sort-by travel' id='" + value["Name"] + "-Time-Travel-Total'> <img src='../images/icons/chainmail_boots.png'>&nbsp;&nbsp;" + comma(km) + " km Travelled </div><div class='col-sm-3 extra-info sort-by death' id='" + value["Name"] + "-Time-Deaths-Deaths'> <img src='../images/icons/heart.png'>&nbsp;&nbsp;" + comma(value["Time"]["Deaths"]["Deaths"]) + " Deaths </div><div class='col-sm-3 extra-info sort-by cake' id='" + value["Name"] + "-Time-Cake-Slices'> <img src='../images/icons/cake.png'>&nbsp;&nbsp;" + comma(value["Time"]["Cake"]["Slices"]) + " Slices of Cake </div></div><div class='row extra-row ores-hidden' id='" + value["Name"] + "-ores-hidden'> <div class='col-sm-3 extra-info sort-by coal-ore' id='" + value["Name"] + "-Ores-Ores-Coal'> <img src='../images/blocks/coal_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Coal"]) + " Coal Ore </div><div class='col-sm-3 extra-info sort-by iron-ore' id='" + value["Name"] + "-Ores-Ores-Iron'> <img src='../images/blocks/iron_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Iron"]) + " Iron Ore </div><div class='col-sm-3 extra-info sort-by redstone-ore' id='" + value["Name"] + "-Ores-Ores-Redstone'> <img src='../images/blocks/redstone_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Redstone"]) + " Redstone Ore </div><div class='col-sm-3 extra-info sort-by lapis-ore' id='" + value["Name"] + "-Ores-Ores-Lapis'> <img src='../images/blocks/lapis_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Lapis"]) + " Lapis Ore </div><div class='col-sm-3 extra-info sort-by gold-ore' id='" + value["Name"] + "-Ores-Ores-Gold'> <img src='../images/blocks/gold_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Gold"]) + " Gold Ore </div><div class='col-sm-3 extra-info sort-by emerald-ore' id='" + value["Name"] + "-Ores-Ores-Emerald'> <img src='../images/blocks/emerald_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Emerald"]) + " Emerald Ore </div><div class='col-sm-3 extra-info sort-by diamond-ore' id='" + value["Name"] + "-Ores-Ores-Diamond'> <img src='../images/blocks/diamond_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Diamond"]) + " Diamond Ore </div><div class='col-sm-3 extra-info sort-by quartz-ore' id='" + value["Name"] + "-Ores-Ores-Quartz'> <img src='../images/blocks/quartz_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Quartz"]) + " Quartz Ore </div><div class='col-sm-3 extra-info sort-by trade' id='" + value["Name"] + "-Ores-Trades'> <img src='../images/icons/emerald.png'>&nbsp;&nbsp;" + comma(value["Ores"]["Trades"]) + " Villager Trades </div></div><div class='row extra-row break-hidden' id='" + value["Name"] + "-break-hidden'>"; 
 			
 			$.each(value["Break"]["Top10"], function( breakKey, breakVal ) {
-				text += "<div class='col-sm-3 extra-info sort-by " + breakVal["Name"] + "' id='" + value["Name"] + "-Break-Top10-" + breakVal["Name"] + "'> <img src='../images/blocks/" + breakVal["Name"] + ".png' class='block'>&nbsp;&nbsp;" + comma(breakVal["Amount"]) + " " + breakVal["Name"] + " Blocks </div>";
+				text += "<div class='col-sm-3 extra-info sort-by " + breakVal["Name"].replace("_", " ").toProperCase + "' id='" + value["Name"] + "-Break-Top10-" + breakVal["Name"] + "'> <img src='../images/blocks/" + breakVal["Name"] + ".png' class='block'>&nbsp;&nbsp;" + comma(breakVal["Amount"]) + " " + breakVal["Name"] + " Blocks </div>";
 			});
 			
 			text += "</div><div class='row extra-row place-hidden' id='" + value["Name"] + "-place-hidden'>";
 			
 			 $.each(value["Use"]["Top10"], function( useKey, useVal ) {
-				text += "<div class='col-sm-3 extra-info sort-by " + useVal["Name"] + "' id='" + value["Name"] + "-Use-Top10-" + useVal["Name"] + "'> <img src='../images/blocks/" + useVal["Name"] + ".png' class='block'>&nbsp;&nbsp;" + comma(useVal["Amount"]) + " " + useVal["Name"] + "</div>";
+				text += "<div class='col-sm-3 extra-info sort-by " + useVal["Name"].replace("_", " ").toProperCase + "' id='" + value["Name"] + "-Use-Top10-" + useVal["Name"] + "'> <img src='../images/blocks/" + useVal["Name"] + ".png' class='block'>&nbsp;&nbsp;" + comma(useVal["Amount"]) + " " + useVal["Name"] + "</div>";
 			});
 	
 			 
