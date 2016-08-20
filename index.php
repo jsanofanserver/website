@@ -316,7 +316,7 @@ foreach($posts["data"]["children"] as $post){
 	}
 	
 	if($thumbnail == "nsfw" || $thumbnail == "self" || $thumbnail == "default"){
-		$thumbnail = "req/logo.jpg";
+		$thumbnail = "images/logo.jpg";
 	}
 	
 	$j_array .= "\"<div class='post'> <div class='row'> <div class='col-md-1 votes vcenter'>" . $score . "</div><!-- --><div class='col-md-2 rthumbnail vcenter'><img src='" . $thumbnail . "'/></div><!-- --><div class='col-md-9 info vcenter'> <div class='title'><a href='" . $url . "'>" . htmlentities($title) . "</a></div>" . $nsfw_label . "<span class='user'><a href='https://www.reddit.com/u/" . $username . "'>" . $username . "</a></span> &bull; <span class='comments'><a href='https://www.reddit.com" . $perma . "'>" . $comment_text . "</a></span> &bull; <span class='time'>" . $human_time . " ago</span> </div></div></div>\", ";
