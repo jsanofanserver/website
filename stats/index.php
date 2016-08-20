@@ -133,12 +133,12 @@ foreach($members as $uuid => $name){
 			if (substr($key, 0, 25) == "stat.mineBlock.minecraft.") {
 				$block_name = substr($key, 25);
 				$break[$block_name] = $stats[$key];
-				$break_names[$block_name] = ucfirst(str_replace("_", " ", $block_name));
+				$break_names[$block_name] = ucwords(str_replace("_", " ", $block_name));
 				$break_total = $break_total + $stats[$key];
 			}else if(substr($key, 0, 23) == "stat.useItem.minecraft."){
 				$item_name = substr($key, 23);
 				$use[$item_name] = $stats[$key];
-				$use_names[$item_name] = ucfirst(str_replace("_", " ", $item_name));
+				$use_names[$item_name] = ucwords(str_replace("_", " ", $item_name));
 				$use_total = $use_total + $stats[$key];
 			}
 		}
@@ -253,7 +253,7 @@ function output(list){
 			});
 	
 			 
-			 text += "<div class='col-sm-3 extra-info sort-by interactions' id='" + value["Name"] + "-Use-Interactions-Total'> <img src='../images/blocks/crafting_table_front.png' class='block'>&nbsp;&nbsp;" + comma(value["Use"]["Interactions"]["Total"]) + " Block Interactions </div></div><div class='row extra-row kill-hidden' id='" + value["Name"] + "-kill-hidden'>";
+			 text += "<div class='col-sm-3 extra-info sort-by interactions' id='" + value["Name"] + "-Use-Interactions-Total'> <img src='../images/blocks/crafting_table.png' class='block'>&nbsp;&nbsp;" + comma(value["Use"]["Interactions"]["Total"]) + " Block Interactions </div></div><div class='row extra-row kill-hidden' id='" + value["Name"] + "-kill-hidden'>";
 			 
 			 var mobs = ["Bat", "Blaze", "CaveSpider", "Chicken", "Cow", "Creeper", "Enderman", "Endermite", "Horse", "Ghast", "Guardian", "LavaSlime", "Pig", "PigZombie", "Rabbit", "Sheep", "Silverfish", "Skeleton", "Slime", "Spider", "Squid", "Villager", "Witch", "Zombie"];
 			 
