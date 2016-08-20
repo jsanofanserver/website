@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-Page made by Dakota Svendsen
+Page made by Dakota
 
 Plan:
  - Use PHP to gather all json data required
@@ -13,7 +13,6 @@ Plan:
     - Click on individual items within section, sort by individual items in that section
        - That section will then be on top, item bolded
  - Have whitelist available somewhere near the top, to individually select user
- 
 -->
 <html>
 <head>
@@ -294,7 +293,6 @@ function sort(path, array){
 
     function getValue(obj, path){
         path.forEach(path => obj = obj[path])
-        console.log(obj);
         return obj;
     }
 }
@@ -332,7 +330,6 @@ $(document).on("click", ".stat-title", function(){
 		$("#" + id).addClass("active");
 		$("#" + id + "-hidden").addClass("visible");
 		visible = id;
-		console.log(name + ", " + oldName + ", " + visible)
 	}
 });
 
