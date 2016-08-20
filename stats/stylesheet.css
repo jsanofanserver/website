@@ -109,3 +109,7 @@
 	padding-bottom:50px;
 	opacity:0.6;
 }
+img.block{
+	image-rendering: pixelated;
+	width:32px;
+}
