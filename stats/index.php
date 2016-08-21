@@ -248,8 +248,8 @@ function output(list){
 			var tooltip = "";
 			$.each(value["Time"]["Travel"], function( type, amount ) {
 				if(type != "Total"){
-					var percent = Math.round((amount/total_cm)*1000)/10
-					tooltip += type + ": " + comma(Math.round(amount*0.001)/100) + " km, (" + percent + "%)<br>";
+					var percent = Math.round((amount/total_cm)*100)
+					tooltip += type + ": " + comma(Math.round(amount*0.00001)) + " km, (" + percent + "%)<br>";
 				}
 			});
 			tooltip = tooltip.slice(0, -4)

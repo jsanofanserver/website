@@ -113,6 +113,6 @@ img.block{
 	image-rendering: pixelated;
 	width:32px;
 }
-.tooltip{
+.tooltip.inner{
 	text-align:left;
 }
