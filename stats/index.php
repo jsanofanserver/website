@@ -245,7 +245,7 @@ function output(list){
 					var percent = Math.round((amount/value["Time"]["Travel"]["Total"])*10)/10
 					tooltip += type + ": " + comma(Math.round(amount*0.001)/100) + " km, (" + percent + "%)<br>";
 				}
-			}
+			});
 			tooltip = tooltip.slice(0, -4)
 			
 			var text = "<div class='closed user-stats' id='" + value["Name"] + "'> <div class='row'> <div class='col-xs-2 col-md-2 display' id='" + value["Name"] + "-display'> <img src='https://minotar.net/helm/" + value["Name"] + "/80.png' class='face'> &nbsp;&nbsp; " + value["Name"] + " </div><div class='col-xs-2 col-md-2 stat-title time' id='" + value["Name"] + "-time'> <div class='icon-circle'> <img src='../images/icons/clock.png'> </div>" + comma(value["Time"]["Hours"]) + " Hours Played </div><div class='col-xs-2 col-md-2 stat-title ores' id='" + value["Name"] + "-ores'> <div class='icon-circle'> <img src='../images/icons/diamond_ore.png'> </div>" + comma(value["Ores"]["Total"]) + " Ores Mined </div><div class='col-xs-2 col-md-2 stat-title break' id='" + value["Name"] + "-break'> <div class='icon-circle'> <img src='../images/icons/grass.png'> </div>" + comma(value["Break"]["Total"]) + " Blocks Broken </div><div class='col-xs-2 col-md-2 stat-title place' id='" + value["Name"] + "-place'> <div class='icon-circle'> <img src='../images/icons/stonebrick.png'> </div>" + comma(value["Use"]["Total"]) + " Items Used </div><div class='col-xs-2 col-md-2 stat-title kill' id='" + value["Name"] + "-kill'> <div class='icon-circle'> <img src='../images/icons/cow.png'> </div>" + comma(value["Kill"]["Mobs"]["Total"]) + " Mobs Killed </div></div><div class='extra'> <div class='row extra-row time-hidden' id='" + value["Name"] + "-time-hidden'>" + 
