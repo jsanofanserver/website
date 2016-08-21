@@ -74,23 +74,27 @@ foreach($members as $uuid => $name){
 		$time = round($time/72000, 1);
 		
 		// # Travel #
-		$travel = array("walk" => 0, "crouch" => 0, "sprint" => 0, "swim" => 0, "fall" => 0, "climb" => 0, "fly" => 0, "dive" => 0, "minecart" => 0, "boat" => 0, "pig" => 0, "horse" => 0);
+		$travel = array("walk" => 0, "fly" => 0, "crouch" => 0, "sprint" => 0, "swim" => 0, "fall" => 0, "climb" => 0, "dive" => 0, "minecart" => 0, "boat" => 0, "pig" => 0, "horse" => 0);
+		$travel_js = "";
 		if(array_key_exists("stat.walkOneCm", $stats)){$travel["walk"] = $stats["stat.walkOneCm"];}
+		if(array_key_exists("stat.aviateOneCm", $stats)){$travel["fly"] = $stats["stat.aviateOneCm"];}
 		if(array_key_exists("stat.crouchOneCm", $stats)){$travel["crouch"] = $stats["stat.crouchOneCm"];}
 		if(array_key_exists("stat.sprintOneCm", $stats)){$travel["sprint"] = $stats["stat.sprintOneCm"];}
 		if(array_key_exists("stat.swimOneCm", $stats)){$travel["swim"] = $stats["stat.swimOneCm"];}
 		if(array_key_exists("stat.fallOneCm", $stats)){$travel["fall"] = $stats["stat.fallOneCm"];}
 		if(array_key_exists("stat.climbOneCm", $stats)){$travel["climb"] = $stats["stat.climbOneCm"];}
-		if(array_key_exists("stat.flyOneCm", $stats)){$travel["fly"] = $stats["stat.flyOneCm"];}
 		if(array_key_exists("stat.diveOneCm", $stats)){$travel["dive"] = $stats["stat.diveOneCm"];}
 		if(array_key_exists("stat.minecartOneCm", $stats)){$travel["minecart"] = $stats["stat.minecartOneCm"];}
 		if(array_key_exists("stat.boatOneCm", $stats)){$travel["boat"] = $stats["stat.boatOneCm"];}
 		if(array_key_exists("stat.pigOneCm", $stats)){$travel["pig"] = $stats["stat.pigOneCm"];}
 		if(array_key_exists("stat.horseOneCm", $stats)){$travel["horse"] = $stats["stat.horseOneCm"];}
 		$travel_total = 0;
-		foreach($travel as $val){
+		asort($travel);
+		foreach($travel as $type => $val){
 			$travel_total = $travel_total + $val;
+			$travel_js .= ",'" . ucfirst($type) . "' : " . $val;
 		}
+		
 		
 		// # Deaths #
 		if(array_key_exists("stat.deaths", $stats)){$deaths = $stats["stat.deaths"];}else{$deaths = 0;}
@@ -182,7 +186,7 @@ foreach($members as $uuid => $name){
 		if(array_key_exists("stat.playerKills", $stats)){$pkills = $stats["stat.playerKills"];}else{$pkills = 0;}
 		if(array_key_exists("stat.damageDealt", $stats)){$dealt = $stats["stat.damageDealt"];}else{$dealt = 0;}
 		
-		echo "{'Name' : '" . $name . "', 'Time' : {'Hours' : " . $time . ",'Travel' : {'Total' : " . $travel_total . ",'Walk' : " . $travel["walk"] . ",'Crouch' : " . $travel["crouch"] . ",'Sprint' : " . $travel["sprint"] . ",'Swim' : " . $travel["swim"] . ",'Fall' : " . $travel["fall"] . ",'Climb' : " . $travel["climb"] . ",'Fly' : " . $travel["fly"] . ",'Dive' : " . $travel["dive"] . ",'Minecart' : " . $travel["minecart"] . ",'Boat' : " . $travel["boat"] . ",'Pig' : " . $travel["pig"] . ",'Horse' : " . $travel["horse"] . "},'Deaths' : {'Deaths' : " . $deaths . ",'Damage' : " . $damage . "},'Cake' : {'Slices' : " . $cake . ",'Calories' : " . $calories . "}},'Ores' : {'Total' : " . $ore_total . ",'Ores' : {'Coal' : " . $ore_list["coal_ore"] . ",'Iron' : " . $ore_list["iron_ore"] . ",'Redstone' : " . $ore_list["redstone_ore"] . ",'Lapis' : " . $ore_list["lapis_ore"] . ",'Gold' : " . $ore_list["gold_ore"] . ",'Emerald' : " . $ore_list["emerald_ore"] . ",'Diamond' : " . $ore_list["diamond_ore"] . ",'Quartz' : " . $ore_list["quartz_ore"] . "},'Trades' : " . $trades . "},'Break' : {'Total' : " . $break_total . ",'Top10' : {";
+		echo "{'Name' : '" . $name . "', 'Time' : {'Hours' : " . $time . ",'Travel' : {'Total' : " . $travel_total . $travel_js . "},'Deaths' : {'Deaths' : " . $deaths . ",'Damage' : " . $damage . "},'Cake' : {'Slices' : " . $cake . ",'Calories' : " . $calories . "}},'Ores' : {'Total' : " . $ore_total . ",'Ores' : {'Coal' : " . $ore_list["coal_ore"] . ",'Iron' : " . $ore_list["iron_ore"] . ",'Redstone' : " . $ore_list["redstone_ore"] . ",'Lapis' : " . $ore_list["lapis_ore"] . ",'Gold' : " . $ore_list["gold_ore"] . ",'Emerald' : " . $ore_list["emerald_ore"] . ",'Diamond' : " . $ore_list["diamond_ore"] . ",'Quartz' : " . $ore_list["quartz_ore"] . "},'Trades' : " . $trades . "},'Break' : {'Total' : " . $break_total . ",'Top10' : {";
 		
 		for($i = 0; $i < 10; $i++){
 			if(array_key_exists($i, $break_keys)){
@@ -219,9 +223,6 @@ foreach($members as $uuid => $name){
 
 
 
-
-
-
 users = users.sort(function (a, b) {
     return b["Time"]["Hours"] - a["Time"]["Hours"];
 });
@@ -238,8 +239,17 @@ function output(list){
 	$.each(list, function( key, value ) {
 		if(value["Time"]["Hours"] > 0){
 			var km = Math.round(value["Time"]["Travel"]["Total"]*0.00001);
+			var tooltip = "";
+			$.each(value["Time"]["Travel"], function( type, amount ) {
+				if(type != total){
+					var percent = Math.round((amount/value["Time"]["Travel"]["Total"])*10)/10
+					tooltip += type + ": " + comma(Math.round(amount*0.001)/100) + " km, (" + percent + "%)<br>";
+				}
+			}
+			tooltip = tooltip.slice(0, -4)
+			
 			var text = "<div class='closed user-stats' id='" + value["Name"] + "'> <div class='row'> <div class='col-xs-2 col-md-2 display' id='" + value["Name"] + "-display'> <img src='https://minotar.net/helm/" + value["Name"] + "/80.png' class='face'> &nbsp;&nbsp; " + value["Name"] + " </div><div class='col-xs-2 col-md-2 stat-title time' id='" + value["Name"] + "-time'> <div class='icon-circle'> <img src='../images/icons/clock.png'> </div>" + comma(value["Time"]["Hours"]) + " Hours Played </div><div class='col-xs-2 col-md-2 stat-title ores' id='" + value["Name"] + "-ores'> <div class='icon-circle'> <img src='../images/icons/diamond_ore.png'> </div>" + comma(value["Ores"]["Total"]) + " Ores Mined </div><div class='col-xs-2 col-md-2 stat-title break' id='" + value["Name"] + "-break'> <div class='icon-circle'> <img src='../images/icons/grass.png'> </div>" + comma(value["Break"]["Total"]) + " Blocks Broken </div><div class='col-xs-2 col-md-2 stat-title place' id='" + value["Name"] + "-place'> <div class='icon-circle'> <img src='../images/icons/stonebrick.png'> </div>" + comma(value["Use"]["Total"]) + " Items Used </div><div class='col-xs-2 col-md-2 stat-title kill' id='" + value["Name"] + "-kill'> <div class='icon-circle'> <img src='../images/icons/cow.png'> </div>" + comma(value["Kill"]["Mobs"]["Total"]) + " Mobs Killed </div></div><div class='extra'> <div class='row extra-row time-hidden' id='" + value["Name"] + "-time-hidden'>" + 
-			"<div class='col-sm-3 extra-info sort-by travel' id='" + value["Name"] + "-Time-Travel-Total'> <img src='../images/icons/chainmail_boots.png'>&nbsp;&nbsp;" + comma(km) + " km Travelled </div><div class='col-sm-3 extra-info sort-by death' id='" + value["Name"] + "-Time-Deaths-Deaths'> <img src='../images/icons/heart.png'>&nbsp;&nbsp;" + comma(value["Time"]["Deaths"]["Deaths"]) + " Deaths </div><div class='col-sm-3 extra-info sort-by cake' id='" + value["Name"] + "-Time-Cake-Slices'> <img src='../images/icons/cake.png'>&nbsp;&nbsp;" + comma(value["Time"]["Cake"]["Slices"]) + " Slices of Cake </div></div><div class='row extra-row ores-hidden' id='" + value["Name"] + "-ores-hidden'> <div class='col-sm-3 extra-info sort-by coal-ore' id='" + value["Name"] + "-Ores-Ores-Coal'> <img src='../images/blocks/coal_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Coal"]) + " Coal Ore </div><div class='col-sm-3 extra-info sort-by iron-ore' id='" + value["Name"] + "-Ores-Ores-Iron'> <img src='../images/blocks/iron_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Iron"]) + " Iron Ore </div><div class='col-sm-3 extra-info sort-by redstone-ore' id='" + value["Name"] + "-Ores-Ores-Redstone'> <img src='../images/blocks/redstone_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Redstone"]) + " Redstone Ore </div><div class='col-sm-3 extra-info sort-by lapis-ore' id='" + value["Name"] + "-Ores-Ores-Lapis'> <img src='../images/blocks/lapis_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Lapis"]) + " Lapis Ore </div><div class='col-sm-3 extra-info sort-by gold-ore' id='" + value["Name"] + "-Ores-Ores-Gold'> <img src='../images/blocks/gold_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Gold"]) + " Gold Ore </div><div class='col-sm-3 extra-info sort-by emerald-ore' id='" + value["Name"] + "-Ores-Ores-Emerald'> <img src='../images/blocks/emerald_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Emerald"]) + " Emerald Ore </div><div class='col-sm-3 extra-info sort-by diamond-ore' id='" + value["Name"] + "-Ores-Ores-Diamond'> <img src='../images/blocks/diamond_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Diamond"]) + " Diamond Ore </div><div class='col-sm-3 extra-info sort-by quartz-ore' id='" + value["Name"] + "-Ores-Ores-Quartz'> <img src='../images/blocks/quartz_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Quartz"]) + " Quartz Ore </div><div class='col-sm-3 extra-info sort-by trade' id='" + value["Name"] + "-Ores-Trades'> <img src='../images/icons/emerald.png'>&nbsp;&nbsp;" + comma(value["Ores"]["Trades"]) + " Villager Trades </div></div><div class='row extra-row break-hidden' id='" + value["Name"] + "-break-hidden'>"; 
+			"<div class='col-sm-3 extra-info sort-by travel' id='" + value["Name"] + "-Time-Travel-Total' data-toggle='tooltip' data-placement='right' data-html='true' title='" + tooltip + '> <img src='../images/icons/chainmail_boots.png'>&nbsp;&nbsp;" + comma(km) + " km Travelled </div><div class='col-sm-3 extra-info sort-by fly' id='" + value["Name"] + "-Time-Travel-Fly'> <img src='../images/blocks/elytra.png' class='block'>&nbsp;&nbsp;" + comma(Math.round(value["Time"]["Travel"]["Total"]*0.01)); + " m flown </div><div class='col-sm-3 extra-info sort-by death' id='" + value["Name"] + "-Time-Deaths-Deaths'> <img src='../images/icons/heart.png'>&nbsp;&nbsp;" + comma(value["Time"]["Deaths"]["Deaths"]) + " Deaths </div><div class='col-sm-3 extra-info sort-by cake' id='" + value["Name"] + "-Time-Cake-Slices'> <img src='../images/icons/cake.png'>&nbsp;&nbsp;" + comma(value["Time"]["Cake"]["Slices"]) + " Slices of Cake </div></div><div class='row extra-row ores-hidden' id='" + value["Name"] + "-ores-hidden'> <div class='col-sm-3 extra-info sort-by coal-ore' id='" + value["Name"] + "-Ores-Ores-Coal'> <img src='../images/blocks/coal_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Coal"]) + " Coal Ore </div><div class='col-sm-3 extra-info sort-by iron-ore' id='" + value["Name"] + "-Ores-Ores-Iron'> <img src='../images/blocks/iron_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Iron"]) + " Iron Ore </div><div class='col-sm-3 extra-info sort-by redstone-ore' id='" + value["Name"] + "-Ores-Ores-Redstone'> <img src='../images/blocks/redstone_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Redstone"]) + " Redstone Ore </div><div class='col-sm-3 extra-info sort-by lapis-ore' id='" + value["Name"] + "-Ores-Ores-Lapis'> <img src='../images/blocks/lapis_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Lapis"]) + " Lapis Ore </div><div class='col-sm-3 extra-info sort-by gold-ore' id='" + value["Name"] + "-Ores-Ores-Gold'> <img src='../images/blocks/gold_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Gold"]) + " Gold Ore </div><div class='col-sm-3 extra-info sort-by emerald-ore' id='" + value["Name"] + "-Ores-Ores-Emerald'> <img src='../images/blocks/emerald_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Emerald"]) + " Emerald Ore </div><div class='col-sm-3 extra-info sort-by diamond-ore' id='" + value["Name"] + "-Ores-Ores-Diamond'> <img src='../images/blocks/diamond_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Diamond"]) + " Diamond Ore </div><div class='col-sm-3 extra-info sort-by quartz-ore' id='" + value["Name"] + "-Ores-Ores-Quartz'> <img src='../images/blocks/quartz_ore.png' class='block'>&nbsp;&nbsp;" + comma(value["Ores"]["Ores"]["Quartz"]) + " Quartz Ore </div><div class='col-sm-3 extra-info sort-by trade' id='" + value["Name"] + "-Ores-Trades'> <img src='../images/icons/emerald.png'>&nbsp;&nbsp;" + comma(value["Ores"]["Trades"]) + " Villager Trades </div></div><div class='row extra-row break-hidden' id='" + value["Name"] + "-break-hidden'>"; 
 			
 			$.each(value["Break"]["Top10"], function( breakKey, breakVal ) {
 				text += "<div class='col-sm-3 extra-info sort-by " + breakVal["Name"] + "' id='" + value["Name"] + "-Break-Top10-" + breakVal["Name"] + "'> <img src='../images/blocks/" + breakVal["Name"] + ".png' class='block'>&nbsp;&nbsp;" + comma(breakVal["Amount"]) + " " + breakVal["Title"] + " Blocks </div>";
