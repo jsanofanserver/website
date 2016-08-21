@@ -239,7 +239,7 @@
 <div id="logo"><a href="#"><img src="images/logo.jpg"></a></div>
 <script>
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+	$('[data-toggle="tooltip"]').tooltip()
 })
 
 <?php

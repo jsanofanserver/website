@@ -56,6 +56,10 @@ ga('send', 'pageview');
 <br><br>
 <script>
 
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+})
+
 var users = [
 <?php
 $members = json_decode(file_get_contents("../req/uuidnames.json"), TRUE);
