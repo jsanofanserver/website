@@ -70,9 +70,9 @@
                 </div>
                 
                 <div class="item">
-                    <img src="images/banners/banner3.jpg" alt="JSFS' Nether Hub">
+                    <img src="images/banners/banner3.jpg" alt="JFS' Nether Hub">
                     <div class="carousel-caption">
-                    	<p>JSFS' Nether Hub</p>
+                    	<p>JFS' Nether Hub</p>
                     </div>
                 </div>
                 
