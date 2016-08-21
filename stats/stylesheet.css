@@ -59,11 +59,6 @@
 .open .row div.active{
 	border-bottom:3px solid #F7F7F7;
 }
-.open .extra .row div{
-	border-bottom:none;
-	height: 60px;
-	text-align: left;
-}
 .open .extra .row .extra-info{
 	border-bottom:none;
 	height: 60px;
