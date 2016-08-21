@@ -64,6 +64,11 @@
 	height: 60px;
 	text-align: left;
 }
+.open .extra .row .extra-info{
+	border-bottom:none;
+	height: 60px;
+	text-align: left;
+}
 .icon-circle{
 	border-radius: 50%;
 	width: 54px;
@@ -112,4 +117,7 @@
 img.block{
 	image-rendering: pixelated;
 	width:32px;
+}
+.tooltip{
+	text-align:left;
 }

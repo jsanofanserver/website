@@ -94,7 +94,7 @@ foreach($members as $uuid => $name){
 		if(array_key_exists("stat.pigOneCm", $stats)){$travel["pig"] = $stats["stat.pigOneCm"];}
 		if(array_key_exists("stat.horseOneCm", $stats)){$travel["horse"] = $stats["stat.horseOneCm"];}
 		$travel_total = 0;
-		asort($travel);
+		arsort($travel);
 		foreach($travel as $type => $val){
 			$travel_total = $travel_total + $val;
 			$travel_js .= ",'" . ucfirst($type) . "' : " . $val;
@@ -243,11 +243,12 @@ function output(list){
 	$("#background").empty();
 	$.each(list, function( key, value ) {
 		if(value["Time"]["Hours"] > 0){
-			var km = Math.round(value["Time"]["Travel"]["Total"]*0.00001);
+			var total_cm = value["Time"]["Travel"]["Total"];
+			var km = Math.round(total_cm*0.00001);
 			var tooltip = "";
 			$.each(value["Time"]["Travel"], function( type, amount ) {
-				if(type != "total"){
-					var percent = Math.round((amount/value["Time"]["Travel"]["Total"])*10)/10
+				if(type != "Total"){
+					var percent = Math.round((amount/total_cm)*1000)/10
 					tooltip += type + ": " + comma(Math.round(amount*0.001)/100) + " km, (" + percent + "%)<br>";
 				}
 			});
