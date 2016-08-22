@@ -17,7 +17,7 @@ Plan:
 <html>
 <head>
 <meta charset="utf-8">
-<title>JSFS || Stats</title>
+<title>JFS || Stats</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha256-o0IkLyCCWGBI+ryg6bL44/f8s4cb7+5bncR4LvU57a8= sha512-jptu6vg45XTY9uPX3vD5nHN4vASCN2hHl+fhmgkdd/px/bFHKMXmDXhkNmTiCpKqH6sliEPFakl2KZNav2Zo1Q==" crossorigin="anonymous">
 <link href="../template.css" rel="stylesheet" type="text/css">
 <link href="stylesheet.css" rel="stylesheet" type="text/css">
