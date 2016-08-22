@@ -13,6 +13,9 @@
 	margin-bottom:20px;
 	overflow:hidden;
 }
+.user-stats .row{
+	white-space: nowrap;
+}
 .titles{
 	height: 80px;
 }
@@ -30,6 +33,7 @@
 }
 .open .row .stat-title{
 	height:83px;
+	overflow: hidden;
 }
 .open .row .active{
 	background:#F7F7F7;
@@ -45,6 +49,8 @@
 .display{
 	width:22.5%;
 	text-align:left;
+	overflow:hidden;
+	font-size:14px;
 }
 .open .extra{
 	border-bottom:3px solid #DEDEDE;
@@ -63,6 +69,7 @@
 	border-bottom:none;
 	height: 60px;
 	text-align: left;
+	overflow: hidden;
 }
 .icon-circle{
 	border-radius: 50%;
