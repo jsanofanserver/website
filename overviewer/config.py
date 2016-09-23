@@ -212,6 +212,12 @@ renders["vanillasouth"] = {
                     'name':'The Republique by Flux'}],
     "markers": [dict(name="Markers", filterFunction=markerFilter, icon="icons/marker_town.png", checked=True)],
 }
+renders["vanillaend"] = {
+    "world": "vanilla",
+    "title": "The End",
+    "rendermode": "end_smooth_lighting = [Base(), EdgeLines(), SmoothLighting(strength=0.5)]",
+    "dimension": "end",
+}
 
 outputdir = "/var/www/html/overviewer"
 texturepath = "/var/www/html/overviewer/1.10.jar"
