@@ -212,7 +212,7 @@ renders["vanillasouth"] = {
                     'name':'The Republique by Flux'}],
     "markers": [dict(name="Markers", filterFunction=markerFilter, icon="icons/marker_town.png", checked=True)],
 }
-renders["vanillaend"] = {
+renders["vanillanether"] = {
     "world": "vanilla",
     "title": "Nether",
     "rendermode": nether_smooth_lighting,
