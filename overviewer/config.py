@@ -214,8 +214,14 @@ renders["vanillasouth"] = {
 }
 renders["vanillaend"] = {
     "world": "vanilla",
+    "title": "Nether",
+    "rendermode": nether_smooth_lighting,
+    "dimension": "nether",
+}
+renders["vanillaend"] = {
+    "world": "vanilla",
     "title": "The End",
-    "rendermode": "end_smooth_lighting = [Base(), EdgeLines(), SmoothLighting(strength=0.5)]",
+    "rendermode": smooth_lighting,
     "dimension": "end",
 }
 
